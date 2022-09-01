@@ -1,9 +1,11 @@
-stages:
-    - apply
+image: tmaier/docker-compose:latest
 
-apply:
-    stage: apply
-    script:
-        - docker-compose restart
-    tags:
-        - prometheus
+services:
+  - docker:dind
+
+deploy:
+  stage: deploy
+  script:
+    - docker-compose restart
+  tags:
+    - prometheus
