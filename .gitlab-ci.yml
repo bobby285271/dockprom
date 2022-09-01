@@ -1,4 +1,4 @@
-image: tmaier/docker-compose:latest
+image: tmaier/docker-compose:20.10
 
 services:
   - docker:dind
@@ -6,6 +6,7 @@ services:
 deploy:
   stage: deploy
   script:
-    - docker-compose restart
+    - docker-compose down
+    - docker-compose up -d
   tags:
     - prometheus
