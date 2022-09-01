@@ -1,0 +1,9 @@
+stages:
+    - apply
+
+apply:
+    stage: apply
+    script:
+        - cd /home/cs/dockprom && docker-compose restart
+    tags:
+        - prometheus
