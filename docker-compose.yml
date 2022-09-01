@@ -136,3 +136,17 @@ services:
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
+
+  backbox:
+    image: prom/blackbox-exporter:v0.21.1
+    container_name: blackbox
+    ports:
+      - "9115:9115"
+    restart: unless-stopped
+    volumes:
+      - ./blackbox:/etc/blackbox
+    command: --config.file=/etc/blackbox/blackbox.yml
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
